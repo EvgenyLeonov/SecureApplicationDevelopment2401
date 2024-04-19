@@ -2,6 +2,8 @@
     <title>Login Demo Page</title>
     <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="async-call.js"></script>
 </head>
 
 <body>
@@ -20,7 +22,18 @@
                     <input type="password" class="form-control" id="password" name="password"/>
                 </div>
                 <button type="submit" class="btn btn-primary btn-sm rowMargin">Submit PostBack</button>
-                <button type="submit" class="btn btn-primary btn-sm rowMargin">Submit Async</button>
+                <button type="button" class="btn btn-primary btn-sm rowMargin" onclick="submitAsync()">Submit Async</button>
+                <div id="message" class="toast rowMargin" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <strong class="me-auto">Message</strong>
+                        <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close" onclick="setMessageVisibility(false)">
+                            <span aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div id="messagePlaceholder" class="toast-body">
+
+                    </div>
+                </div>
             </form>
         </div>
         <div class="col-sm">
