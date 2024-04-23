@@ -6,14 +6,14 @@ const execute = 1;  //00000 001
 // means: 1 OR 0 = 1; 1 OR 1 = 1; 0 OR 0 = 0;
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_OR
 
-let myPermissionsRw = read | write;
+const myPermissionsRw = read | write;
 console.log(myPermissionsRw);
 //6 => 110
 //e => 001
 //r => 100
 printPermissions(myPermissionsRw);
 
-let myPermissionsRe = read | execute;
+const myPermissionsRe = read | execute;
 console.log(myPermissionsRe);
 //read + execute = 5 (dec) = 101 (binary)
 printPermissions(myPermissionsRe);
