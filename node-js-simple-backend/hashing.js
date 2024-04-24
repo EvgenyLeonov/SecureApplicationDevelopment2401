@@ -15,7 +15,7 @@ module.exports.isMatch = (passwordToCheck, storedPassword) => {
     const [hashedPassword, salt] = storedPassword.split(divider);
     const bufferHashedPassword = Buffer.from(hashedPassword, enc);
     const bufferPasswordToCheck = crypto.scryptSync(passwordToCheck, salt, keyLen);
-    console.log("bufferHashedPassword=" + bufferHashedPassword.toString(enc));
-    console.log("bufferStoredPassword=" + bufferPasswordToCheck.toString(enc));
+    //console.log("bufferHashedPassword=" + bufferHashedPassword.toString(enc));
+    //console.log("bufferStoredPassword=" + bufferPasswordToCheck.toString(enc));
     return crypto.timingSafeEqual(bufferHashedPassword, bufferPasswordToCheck);
 }

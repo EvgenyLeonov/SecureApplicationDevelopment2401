@@ -13,7 +13,7 @@ function submitAsync() {
     const login = $("#login").val();
     const password = $("#password").val();
     const data = {login: login, password: password};
-    fetch("http://localhost:3000/login", {
+    fetch("http://localhost:3001/login-redirect", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data)

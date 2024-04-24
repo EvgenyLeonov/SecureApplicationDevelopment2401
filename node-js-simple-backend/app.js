@@ -12,9 +12,9 @@ app.use((req, res, next) => {
     // Attach CORS headers
     // Required when using a detached backend (that runs on a different domain)
     //* -- means all
-    //res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", "*");
     //from this site only
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+    //res.setHeader("Access-Control-Allow-Origin", "https://localhost:3000");
     res.setHeader("Access-Control-Allow-Methods", "GET,POST");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     next();
@@ -22,6 +22,11 @@ app.use((req, res, next) => {
 
 app.get("/health", (req, res, next) => {
     res.send("<h1>Service is OK</h1>");
+});
+
+app.post("/login-redirect", (req, res, next) => {
+    const name = req.body.login;
+    res.send(`<h1>Hello, ${name}!</h1>`);
 });
 
 app.post("/login", (req, res, next) => {
