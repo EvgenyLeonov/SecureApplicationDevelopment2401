@@ -1,0 +1,23 @@
+<head>
+    <%- include("../shared/cssSupport.ejs") %>
+    <title>Search</title>
+</head>
+<body>
+<%- include("../shared/navigation.ejs") %>
+<div class="container">
+    <div class="row">
+        <h2>Search Criteria</h2>
+        <form method="post" action="/search/do">
+            <div class="form-group">
+                <label for="dogSize">Dog Size</label>
+                <select class="form-control" id="dogSize" name="dogSize">
+                    <option value="0">< 5 kg</option>
+                    <option value="1">6-14 kg</option>
+                    <option value="2">> 14 kg</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm row-margin">Search</button>
+        </form>
+    </div>
+</div>
+</body>

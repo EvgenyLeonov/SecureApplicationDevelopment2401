@@ -1,0 +1,24 @@
+<head>
+    <%- include("../shared/cssSupport.ejs") %>
+    <title><%= title %></title>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+            <form action="/auth/<% if (isSignup) { %>signup<% } else { %>login<% } %>" method="POST">
+                <div class="form-group">
+                    <label for="login">Login</label>
+                    <input type="text" class="form-control" id="login" name="login"/>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm row-margin">Submit</button>
+            </form>
+        </div>
+        <div class="col-sm">
+        </div>
+    </div>
+</div>
+</body>
