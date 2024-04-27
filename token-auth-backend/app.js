@@ -25,7 +25,7 @@ app.post("/login", (req, res) => {
 //two middlewares run one after another
 app.get("/hello", authHelper.checkAuthentication, (req, res) => {
     console.log("hello call");
-    res.json({message: "Hello!", login: res.login});
+    res.json({message: "Hello!", userInfo: res.userInfo});
 });
 
 app.listen(3001);

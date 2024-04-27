@@ -42,6 +42,7 @@ module.exports.checkAuthentication = (req, res, next) => {
     if (!tokenInfo) {
         throwError("Authentication failed");
     }
-    res.login = tokenInfo.login;
+    //you may dynamically add any properties
+    res.userInfo = {login: tokenInfo.login, read: true, write: false};
     next();
 };

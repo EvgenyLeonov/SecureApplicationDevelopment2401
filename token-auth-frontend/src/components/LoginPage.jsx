@@ -47,7 +47,7 @@ export default function LoginPage() {
                 setError(res.statusText);
             } else{
                 res.json().then((parsedJson) => {
-                    setMessage(`Message: ${parsedJson.message}; login: ${parsedJson.login}`);
+                    setMessage(`Message: ${parsedJson.message}; login: ${parsedJson.userInfo.login}; read: ${parsedJson.userInfo.read}; write: ${parsedJson.userInfo.write}`);
                 });
             }
         });
