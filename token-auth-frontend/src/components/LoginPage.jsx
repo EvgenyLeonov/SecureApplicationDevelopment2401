@@ -40,14 +40,14 @@ export default function LoginPage() {
         const token = localStorage.getItem(localStorageKey);
         fetch(baseUrl + "/hello", {
             //Bearer is a special word required by convention
-            headers: {Authorization: "Bearer " + token}
+            headers: {Authorization: `Bearer ${token}`}
         }).then(res => {
             console.log("code: " + res.status);
             if (!res.ok){
                 setError(res.statusText);
             } else{
                 res.json().then((parsedJson) => {
-                    setMessage(parsedJson.message);
+                    setMessage(`Message: ${parsedJson.message}; login: ${parsedJson.login}`);
                 });
             }
         });

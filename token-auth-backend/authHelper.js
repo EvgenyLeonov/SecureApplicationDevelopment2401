@@ -33,14 +33,15 @@ module.exports.checkAuthentication = (req, res, next) => {
         throwError("Wrong structure of the header value");
     }
     const token = pieces[1];
-    let isTokenCorrect;
+    let tokenInfo;
     try {
-        isTokenCorrect = jwt.verify(token, getPrivateKey());
+        tokenInfo = jwt.verify(token, getPrivateKey());
     } catch (err) {
         throwError("Token parsing failed", 500);
     }
-    if (!isTokenCorrect) {
+    if (!tokenInfo) {
         throwError("Authentication failed");
     }
+    res.login = tokenInfo.login;
     next();
 };
