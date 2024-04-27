@@ -9,8 +9,8 @@ module.exports.getSearchForm = async (req, res) => {
 module.exports.performSearch = async (req, res) => {
     const desiredDogSize = req.body.dogSize;
     console.log("search for desiredDogSize=" + desiredDogSize);
-    const allUsers = await dao.readDogs();
-    const results = allUsers.filter((item) => item.dogSize === desiredDogSize);
+    const allDogs = await dao.readDogs();
+    const results = allDogs.filter((item) => item.dogSize === desiredDogSize);
     console.log("results=" + results.length);
     res.render("search/results", {
         userName: req.session.userName,
