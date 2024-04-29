@@ -53,6 +53,10 @@ export default function LoginPage() {
         });
     }
 
+    function logoff(){
+        localStorage.removeItem(localStorageKey);
+    }
+
     return (
         <div className="container">
             <div className="row">
@@ -70,7 +74,13 @@ export default function LoginPage() {
                         </button>
                     </div>
                     <div className="form-group">
-                        <button type="button" className="btn btn-primary btn-sm rowMargin" onClick={sayHello}>Say Hello
+                        <button type="button" className="btn btn-primary btn-sm rowMargin"
+                                onClick={sayHello}>Say Hello
+                        </button>
+                    </div>
+                    <div className="form-group">
+                        <button type="button" className="btn btn-primary btn-sm rowMargin"
+                                onClick={sayHello}>Log off
                         </button>
                     </div>
                     {error.length > 0 &&
