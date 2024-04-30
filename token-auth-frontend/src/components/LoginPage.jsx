@@ -80,7 +80,7 @@ export default function LoginPage() {
                     </div>
                     <div className="form-group">
                         <button type="button" className="btn btn-primary btn-sm rowMargin"
-                                onClick={sayHello}>Log off
+                                onClick={logoff}>Log off
                         </button>
                     </div>
                     {error.length > 0 &&
