@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const {check, query, body, validationResult} = require("express-validator");
 
 const bodyParser = require("body-parser");
 const hashHelper = require("./hashing");
@@ -28,6 +29,26 @@ app.post("/login-redirect", (req, res, next) => {
     const name = req.body.login;
     res.send(`<h1>Hello, ${name}!</h1>`);
 });
+
+//this is mandatory functionality
+//you mustn't leave user data in without validation & sanitizing
+app.post("/input-validation",
+    body("login").not().isEmpty().escape(),
+    body("email").trim().isEmail(),
+    body(["password1", "password2"]).not().isEmpty().isLength({min: 10}),
+    check("password1", "invalid password")
+        .custom((value, {req, loc, path}) => {
+            if (value !== req.body.password2) {
+                throw new Error("password1 and password2 must match");
+            } else {
+                return value;
+            }
+        }),
+    (req, res) => {
+        let login = req.body.login;
+        const errors = validationResult(req);
+        res.send(`<h6>Login: ${login} Errors: ${JSON.stringify(errors)}</h6>`);
+    });
 
 app.post("/login", (req, res, next) => {
     const name = req.body.login;

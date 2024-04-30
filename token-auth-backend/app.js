@@ -21,12 +21,6 @@ app.post("/login", (req, res) => {
     res.json({userName: name, token: authHelper.createToken(name)});
 });
 
-app.post("/input-validation", (req, res) => {
-    const name = req.body.login;
-    console.log("login: " + name);
-    res.json({userName: name, token: authHelper.createToken(name)});
-});
-
 //this one is accessible if a user authenticated only
 //two middlewares run one after another
 app.get("/hello", authHelper.checkAuthentication, (req, res) => {
