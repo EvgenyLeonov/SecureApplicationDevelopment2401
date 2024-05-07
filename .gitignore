@@ -1,3 +1,8 @@
 
 .idea/vcs.xml
 /node-js-simple-backend/node_modules/
+/fullstack-app/node_modules
+/token-auth-backend/node_modules
+.idea/SecureApplicationDevelopment2401.iml
+.idea/modules.xml
+.idea/jsLibraryMappings.xml
