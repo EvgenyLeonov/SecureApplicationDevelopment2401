@@ -1,5 +1,7 @@
 const {Client} = require("pg");
 
+//TODO https://node-postgres.com/apis/client
+
 class DAO {
     constructor(credentials) {
         this.credentials = credentials;
@@ -17,34 +19,20 @@ class DAO {
     }
 
     async executeQuery(query, params) {
-        let output = [];
-        this.client
-            .connect()
-            .then(() => {
-                this.client.query(query, params, (err, result) => {
-                    if (err) {
-                        console.error("Error:", err);
-                    } else {
-                        output = result.rows;
-                        console.log("statement executed: ", output);
-                    }
+        await this.client.connect().catch((err) => {
+            console.error("Connection error:", err);
+        });
 
-                    // don't forget to close connection
-                    this.client
-                        .end()
-                        .then(() => {
-                            console.log("output: ", output);
-                            return output;
-                        })
-                        .catch((err) => {
-                            console.error("Error closing connection", err);
-                        });
-                });
-            })
+        const result = await this.client.query(query, params);
+
+        //don't need to wait
+        this.client
+            .end()
             .catch((err) => {
-                console.error("Connection error:", err);
+                console.error("Error closing connection", err);
             });
-        return [];
+
+        return result.rows;
     }
 }
 

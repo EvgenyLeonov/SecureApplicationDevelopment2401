@@ -30,7 +30,8 @@ app.get("/demo", async (req, res) => {
     };
     const dao = new DAO(dbCredentials);
     dao.printCredentials();
-    const rows = await dao.executeQuery("select id, name from app.animals", []);
+    const idGorilla = 3;
+    const rows = await dao.executeQuery("select id, name from app.animals where id=$1", [idGorilla]);
     console.log("rows:", rows)
     res.json({rows_count: rows.length, first_row: rows.length > 0 ? rows[0] : null});
 });
