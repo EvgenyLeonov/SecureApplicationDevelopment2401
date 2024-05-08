@@ -62,3 +62,21 @@ CREATE TABLE app.habitats (
 
 ALTER TABLE app.habitats ADD CONSTRAINT habitats_animals_fk FOREIGN KEY (id_animal) REFERENCES app.animals(id);
 ALTER TABLE app.habitats ADD CONSTRAINT habitats_pavilions_fk FOREIGN KEY (id_pavilion) REFERENCES app.pavilions(id);
+
+CREATE ROLE "AppUserZoo" NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT LOGIN NOREPLICATION NOBYPASSRLS PASSWORD '111';
+GRANT  USAGE ON SCHEMA app TO "AppUserZoo";
+GRANT INSERT, SELECT ON TABLE app.animals TO "AppUserZoo";
+GRANT INSERT, SELECT ON TABLE app.pavilions TO "AppUserZoo";
+GRANT INSERT, SELECT, DELETE, UPDATE ON TABLE app.habitats TO "AppUserZoo";
+
+
+
+
+
+
+
+
+
+
+
+
