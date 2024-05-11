@@ -30,6 +30,8 @@ app.get("/demo", async (req, res) => {
     };
     const dao = new DAO(dbCredentials);
     dao.printCredentials();
+    //attempt to use SQL injection (uncomment)
+    //const idGorilla = "3 or 1=1";
     const idGorilla = 3;
     const rows = await dao.executeQuery("select id, name from app.animals where id=$1", [idGorilla]);
     console.log("rows:", rows)

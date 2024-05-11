@@ -1,5 +1,15 @@
 const express = require("express");
 const app = express();
+const path = require("path");
+const {Log}  = require("../node-js-simple-backend/helpers/logging");
+
+//for logging
+const rootPath = path.dirname(process.mainModule.filename);
+const logsPath = path.join(rootPath, "logs");
+const logFilePath = path.join(logsPath, "log.txt");
+const logger = new Log(logFilePath);
+
+//for user input check
 const {check, query, body, validationResult} = require("express-validator");
 
 const bodyParser = require("body-parser");
@@ -22,6 +32,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/health", (req, res, next) => {
+    logger.log("call health");
     res.send("<h1>Service is OK</h1>");
 });
 
